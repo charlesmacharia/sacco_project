@@ -1,0 +1,274 @@
+/*explain this code  */
+/* what do these codes mean:
+
+1.position:absolute , relative
+2flex-direction ;
+transform: translateY(-50%);
+transform: translateY(-50%);
+transition: .5s;
+
+.form_box .login{
+    left: 0%;
+    padding: 0 40px;
+}
+    .input_box input:focus ~ label,
+.input_box input:valid ~ label{
+    top: -5px;
+    color: #ff2770;
+}
+
+.input_box i{
+    position: absolute;
+    top: 50px;
+    right: 0;
+    font-size: 18px;
+    transform: translateY(-50%);
+
+   
+}
+
+pointer-events: none;
+
+.btn::before{
+   z-index:-1 ;
+
+   )
+
+
+   
+regi-link{
+    font-size: 14px;
+    text-align: center;
+    margin:20px 0px 10px;
+
+}
+line-height: 1.3;
+*/
+
+
+
+
+ @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* color: white; */
+  font-family: "poppins", "Lucida Sans", "Lucida Sans Regular", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #25252b;
+}
+.container {
+  position: relative;
+  width: 750px;
+  height: 450px;
+  border: 2px solid #ff2770;
+  border-radius: 10px;
+  box-shadow: 0 0 25px #ff2770;
+  overflow: hidden;
+}
+
+
+/* Forms wrapper to contain both forms */
+.forms-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.container .form_box {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px 30px;
+  transition: transform 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* Login form - starts at normal position */
+.login-form {
+  transform: translateX(0);
+  z-index: 2;
+}
+
+/* Sign up form - starts off-screen to the right */
+.signup-form {
+  transform: translateX(100%);
+  z-index: 1;
+}
+
+/* When showing sign up - slide login left, slide signup in */
+.container.show-signup .login-form {
+  transform: translateX(-100%);
+}
+
+.container.show-signup .signup-form {
+  transform: translateX(0);
+  z-index: 2;
+}
+
+.form_box h2 {
+  font-size: 32px;
+  text-align: center;
+}
+
+/* Form positioning handled by .form_box now */
+
+.form_box .input_box {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  margin-top: 25px;
+}
+
+.input_box input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  border-bottom: solid 2px #fff;
+  padding-right: 30px;
+}
+
+.input_box label {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: #fff;
+  transition: 0.5s;
+  pointer-events: none;
+}
+
+/* floating effects ~ label - when focused OR has content */
+.input_box input:focus ~ label,
+.input_box input:valid ~ label {
+  top: -15px;
+  color: #ff2770;
+}
+
+.input_box i {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  font-size: 18px;
+  transform: translateY(-50%);
+  transition: 0.5s;
+  color: #fff;
+}
+
+/* floating effects ~ icon - when focused OR has content */
+.input_box input:focus ~ i,
+.input_box input:valid ~ i {
+  color: #ff2770;
+}
+
+.btn {
+  position: relative;
+  width: 100%;
+  height: 45px;
+  background: transparent;
+  border-radius: 40px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  border: #ff2770 solid 2px;
+  overflow: hidden;
+z-index: 1;
+}
+/* 
+/* i think i have something wrong with my btn it lokks like it has 2 borders */
+
+.btn::before {
+  content:"";
+  position: absolute;
+  height: 300%;
+  width: 100%;
+
+  /* this has an issue cant get it to show properly  */
+  /* the gradient looks weird its only supposed to make a slight change  */
+  background: linear-gradient(#25252b, #ff2770,#25252b, #ff2770);
+  top:-100; 
+  left: 0;
+  z-index: -1;
+  transition: .5s;
+}
+
+
+.btn:hover:before {
+  top: 0;
+}
+
+
+.regi-link {
+    font-size: 14px;
+    text-align: center;
+    margin: 20px 0 10px;
+    color: #fff;
+}
+
+.regi-link a{
+    text-decoration: none;
+    color: #ff2770;
+    font-weight: 600;
+
+}
+
+.regi-link a:hover{
+    text-decoration: underline white;
+}
+.info-content {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 50%;
+    display:flex;
+    justify-content: center;
+    flex-direction: column;
+    right: 0;
+    text-align: right;
+    text-transform: uppercase;
+    padding: 0 40px 60px 150px;
+    transition: all 0.6s ease;
+    color: #fff;
+}
+
+
+.info-content h1{
+    text-transform: uppercase;
+line-height: 1.3;
+font-size: 32px; 
+}
+
+.info-content p{
+    font-size: 16px;
+}
+
+
+.curved-shape{
+    position: absolute;
+    right: 0;
+    top: -5;
+    height: 600px;
+    width: 850px;
+    background: linear-gradient(45deg, #25252b ,#ff2770);
+    transform: rotate(10deg) skewY(40deg);
+    transform-origin:bottom right;}
